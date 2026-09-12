@@ -2,22 +2,124 @@
   "name": "markpandocview",
   "displayName": "markpandocview",
   "description": "Markdown Word pdf real-time preview tool.",
+  "keywords": [
+    "markdown",
+    "pandoc",
+    "docx",
+    "pdf",
+    "preview"
+  ],
   "version": "0.0.1",
+  "publisher": "skixkk",
+  "homepage": "https://github.com/Skixkk/markpandocview#readme",
+  "bugs": {
+    "url": "https://github.com/Skixkk/markpandocview/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Skixkk/markpandocview.git"
+  },
+  "license": "MIT",
+  "author": "skixkk",
   "engines": {
     "vscode": "^1.134.0"
   },
   "categories": [
     "Other"
   ],
+  "icon": "images/logo.png",
   "activationEvents": [],
   "main": "./dist/extension.js",
   "contributes": {
+    "configuration": {
+      "type": "object",
+      "title": "markpandocview",
+      "properties": {
+        "markpandocview.pandocPath": {
+          "type": "string",
+          "default": "Get-Command 'pandoc.exe'",
+          "description": "pandoc 所在目录（plugin 会自动检测 pandoc所在目录并自行配置，如出现其他问题 可提 issue 或自行配置）"
+        },
+        "markpandocview.pandocTemplatePath": {
+          "type": "string",
+          "default": "https://github.com/Achuan-2/pandoc_docx_template",
+          "description": "pandoc 模板 所在目录（这个目录下可以供给用户选择所需 docx 样式 或 自定义样式，该推荐插件引用 `https://github.com/Achuan-2/pandoc_docx_template` 中的 `\templates` 或自定义模板文件）"
+        }
+      }
+    },
     "commands": [
       {
-        "command": "markpandocview.helloWorld",
+        "command": "extension.markpandocview.helloWorld",
         "title": "Hello World"
+      },
+      {
+        "command": "extension.markpandocview.getCurrentFilePath",
+        "title": "getPath"
+      },
+      {
+        "command": "extension.markpandocview.getpandocPath",
+        "title": "getPandocPath"
       }
-    ]
+    ],
+    "keybindings": [
+      {
+        "command": "extension.markpandocview.getCurrentFilePath",
+        "key": "ctrl+f10",
+        "mac": "cmd+f10",
+        "when": "editorTextFocus"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "when": "editorFocus",
+          "command": "extension.markpandocview.getpandocPath",
+          "group": "z_commands"
+        }
+      ],
+      "editor/title": [
+        {
+          "when": "editorFocus && resourceLangId == typescript",
+          "command": "extension.markpandocview.getpandocPath",
+          "group": "navigation"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "extension.markpandocview.getpandocPath",
+          "group": "navigation"
+        },
+        {
+          "command": "extension.markpandocview.helloWorld",
+          "group": "navigation"
+        }
+      ]
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "markpandocview",
+          "title": "markpandocview",
+          "icon": "images/markpandocview.svg"
+        }
+      ]
+    },
+    "views": {
+      "markpandocview": [
+        {
+          "id": "Hello",
+          "name": "helloWorld"
+        },
+        {
+          "id": "getCurrentFilePath",
+          "name": "CurrentFilePath"
+        },
+        {
+          "id": "getpandocPath",
+          "name": "pandocPath"
+        }
+      ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "pnpm run package",

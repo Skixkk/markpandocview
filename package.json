@@ -11,6 +11,16 @@
   ],
   "version": "0.0.1",
   "publisher": "skixkk",
+  "homepage": "https://github.com/Skixkk/markpandocview#readme",
+  "bugs": {
+    "url": "https://github.com/Skixkk/markpandocview/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Skixkk/markpandocview.git"
+  },
+  "license": "MIT",
+  "author": "skixkk",
   "engines": {
     "vscode": "^1.134.0"
   },
@@ -18,9 +28,7 @@
     "Other"
   ],
   "icon": "images/logo.png",
-  "activationEvents": [
-    "onView:extension.markpandocview.getCurrentFilePath"
-  ],
+  "activationEvents": [],
   "main": "./dist/extension.js",
   "contributes": {
     "configuration": {
@@ -97,7 +105,7 @@
       ]
     },
     "views": {
-      "viewPath": [
+      "markpandocview": [
         {
           "id": "Hello",
           "name": "helloWorld"

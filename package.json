@@ -10,7 +10,6 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:markpandocview.sayHello",
     "onView:extension.markpandocview.getCurrentFilePath"
   ],
   "main": "./dist/extension.js",
@@ -45,6 +44,23 @@
         "title": "getPandocPath"
       }
     ],
+    "keybindings": [
+      {
+        "command": "extension.markpandocview.getCurrentFilePath",
+        "key": "ctrl+f10",
+        "mac": "cmd+f10",
+        "when": "editorTextFocus"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "when": "editorFocus",
+          "command": "extension.markpandocview.getpandocPath",
+          "group": "navigation"
+        }
+      ]
+    },
     "viewsContainers": {
       "activitybar": [
         {

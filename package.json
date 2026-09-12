@@ -12,12 +12,45 @@
   "activationEvents": [],
   "main": "./dist/extension.js",
   "contributes": {
+    "configuration": {
+      "type": "object",
+      "title": "markpandocview",
+      "properties": {
+        "markpandocview.pandocPath": {
+          "type": "string",
+          "default": "Get-Command 'pandoc.exe'",
+          "description": "pandoc 所在目录（plugin 会自动检测 pandoc所在目录并自行配置，如出现其他问题 可提 issue 或自行配置）"
+        },
+        "markpandocview.pandocTemplatePath": {
+          "type": "string",
+          "default": "https://github.com/Achuan-2/pandoc_docx_template",
+          "description": "pandoc 模板 所在目录（这个目录下可以供给用户选择所需 docx 样式 或 自定义样式，该推荐插件引用 `https://github.com/Achuan-2/pandoc_docx_template` 中的 `\templates` 或自定义模板文件）"
+        }
+      }
+    },
     "commands": [
       {
         "command": "markpandocview.helloWorld",
         "title": "Hello World"
+      },
+      {
+        "command": "extension.markpandocview.getCurrentFilePath",
+        "title": "getPath"
+      },
+      {
+        "command": "extension.markpandocview.getpandocPath",
+        "title": "getPandocPath"
       }
-    ]
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "markpandocview",
+          "title": "markpandocview",
+          "icon": "public/markpandocview.png"
+        }
+      ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "pnpm run package",

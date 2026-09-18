@@ -53,12 +53,24 @@
         "title": "Hello World"
       },
       {
+        "command": "extension.markpandocview.sayHello",
+        "title": "问好"
+      },
+      {
         "command": "extension.markpandocview.getCurrentFilePath",
-        "title": "getPath"
+        "title": "getPath(打印路径)",
+        "icon": {
+          "light": "./images/markpandocview.svg",
+          "dark": "./images/markpandocview.svg"
+        }
       },
       {
         "command": "extension.markpandocview.getpandocPath",
-        "title": "getPandocPath"
+        "title": "getPandocPath(打印pandoc路径)",
+        "icon": {
+          "light": "./images/tool-light.svg",
+          "dark": "./images/tool-light.svg"
+        }
       }
     ],
     "keybindings": [
@@ -75,23 +87,33 @@
           "when": "editorFocus",
           "command": "extension.markpandocview.getpandocPath",
           "group": "z_commands"
+        },
+        {
+          "when": "editorFocus",
+          "command": "extension.markpandocview.getCurrentFilePath",
+          "group": "z_commands"
         }
       ],
       "editor/title": [
         {
-          "when": "editorFocus && resourceLangId == typescript",
-          "command": "extension.markpandocview.getpandocPath",
+          "when": "editorFocus && resourceLangId == markdown",
+          "command": "extension.markpandocview.getCurrentFilePath",
+          "alt": "markdown.showPreviewToSide",
           "group": "navigation"
         }
       ],
       "explorer/context": [
         {
-          "command": "extension.markpandocview.getpandocPath",
-          "group": "navigation"
+          "command": "extension.markpandocview.getCurrentFilePath",
+          "group": "z_commands"
         },
         {
           "command": "extension.markpandocview.helloWorld",
-          "group": "navigation"
+          "group": "z_commands"
+        },
+        {
+          "command": "extension.markpandocview.sayHello",
+          "group": "z_commands"
         }
       ]
     },

@@ -31,6 +31,12 @@
   "activationEvents": [],
   "main": "./dist/extension.js",
   "contributes": {
+    "snippets": [
+      {
+        "language": "javascript",
+        "path": "./snippets/javascript.json"
+      }
+    ],
     "configuration": {
       "type": "object",
       "title": "markpandocview",
